@@ -4,15 +4,13 @@
 
 A fish plugin to list files after `cd` automatically.
 
-## Install
-
-Using [Fisherman](https://github.com/fisherman/fisherman):
+## 🚀 Install
 
 ```
-fisher rstacruz/fish-autols
+fisher add Gazorby/fish-autols
 ```
 
-## Thanks
+## 👍 Thanks
 
 **fish-autols** © 2017+, Rico Sta. Cruz. Released under the [MIT] License.<br>
 Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
