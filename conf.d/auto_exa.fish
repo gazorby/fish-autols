@@ -17,3 +17,9 @@ function __auto_exa_hook --description "Auto exa" --on-event fish_prompt
   end
   set  -g __auto_exa_last (pwd)
 end
+
+set -l uninstall (basename (status -f) .fish)_uninstall
+
+function __$uninstall --on-event $uninstall
+  functions --erase __auto_exa_hook
+end
