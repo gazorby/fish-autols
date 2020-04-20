@@ -1,9 +1,9 @@
-function __autols_hook --description "Auto ls" --on-event fish_prompt
+function __auto_exa_hook --description "Auto exa" --on-event fish_prompt
   if test "$NO_AUTO_LS" != ""
     return
   end
 
-  if test "$__autols_last" != (pwd)
+  if test "$__auto_exa_last" != (pwd)
     echo
     if test -d "$PWD"/.git
       exa --long --header --git
@@ -11,5 +11,5 @@ function __autols_hook --description "Auto ls" --on-event fish_prompt
       exa -la
     end
   end
-  set  -g __autols_last (pwd)
+  set  -g __auto_exa_last (pwd)
 end
