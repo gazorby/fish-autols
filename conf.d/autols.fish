@@ -4,7 +4,12 @@ function __autols_hook --description "Auto ls" --on-event fish_prompt
   end
 
   if test "$__autols_last" != (pwd)
-    echo; exa -la
+    echo
+    if test -d "$PWD"/.git
+      exa --long --header --git
+    else
+      exa -la
+    end
   end
   set  -g __autols_last (pwd)
 end
