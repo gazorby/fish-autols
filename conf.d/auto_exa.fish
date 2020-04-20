@@ -6,7 +6,7 @@ function __auto_exa_hook --description "Auto exa" --on-event fish_prompt
   if test "$__auto_exa_last" != (pwd)
     echo
     if type -q exa
-      if test -d "$PWD"/.git
+      if git rev-parse --is-inside-work-tree &>/dev/null
         exa --long --header --git
       else
         exa -la
