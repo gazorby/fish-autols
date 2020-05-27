@@ -7,7 +7,7 @@ function __auto_exa_hook --description "Auto exa" --on-event fish_prompt
     echo
     if type -q exa
       if git rev-parse --is-inside-work-tree &>/dev/null
-        exa --long --header --git
+        exa --long --all --group --header --git
       else
         exa -la
       end
