@@ -1,23 +1,13 @@
-function __auto_exa_hook --description "Auto exa" --on-event fish_prompt
-  if test "$NO_AUTO_LS" != ""
-    return
+function __auto_exa_uninstall --on-event auto_exa_install
+    # Prefer eza as exa is unmaintained
+    if type -q eza
+      set -Ux __FISH_EXA_BINARY eza
+  else
+      set -Ux __FISH_EXA_BINARY exa
   end
-
-  if test "$__auto_exa_last" != (pwd)
-    echo
-    if type -q exa
-      if git rev-parse --is-inside-work-tree &>/dev/null
-        exa --long --all --group --header --git
-      else
-        exa -la
-      end
-    else
-      ls -la
-    end
-  end
-  set  -g __auto_exa_last (pwd)
 end
 
 function __auto_exa_uninstall --on-event auto_exa_uninstall
   functions --erase __auto_exa_hook
+  set --erase __FISH_EXA_BINARY
 end
