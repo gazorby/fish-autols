@@ -1,16 +1,38 @@
 # fish-autols
 
-> Automatically run `exa` or `ls` when changing directories
+> Automatically run `eza` or `ls` when changing directories
 
 A fish plugin to list files after `cd` automatically.
 
-If you have [exa](https://the.exa.website/) installed (recommended), it will be used instead of `ls`. With exa, if a git repository is detected, exa's `--git` option will be used to show each file's git status
+If you have [eza](https://github.com/eza-community/eza) ([exa](https://the.exa.website/) fork) installed (recommended), it will be used instead of `ls`. With eza, if a git repository is detected, eza's `--git` option will be used to show each file's git status
 
 ## 🚀 Install
 
 ```
-fisher add Gazorby/fish-autols
+fisher install gazorby/fish-autols
 ```
+
+## 🛠 Configuration
+
+Configuration is done through environment variables.
+
+To avoid spamming your `config.fish`, you can set environment variables using `set -Ux` once, to make them persistent across restarts and share them across fish's instances.
+
+⚠️ : Don't use quotes in variables, set them as a list: `set -Ux AUTO_LS_EXA_OPTIONS --long --all`
+
+### Default options
+
+`AUTO_LS_EXA_OPTIONS`
+
+default exa options used when not in git repository
+
+default : `--long --all`
+
+`AUTO_LS_EXA_GIT_OPTIONS`
+
+default exa options used when inside a git repository
+
+default : `--long --all --group --header --git`
 
 ## 👍 Thanks
 

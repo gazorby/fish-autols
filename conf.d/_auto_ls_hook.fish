@@ -1,15 +1,15 @@
-function __auto_exa_hook --description "Auto exa" --on-event fish_prompt
+function _auto_ls_hook --description "Auto ls when chaning directory" --on-event fish_prompt
     if test "$NO_AUTO_LS" != ""
       return
     end
 
     if test "$__auto_exa_last" != (pwd)
       echo
-      if type -q exa
+      if test -n "$_AUTO_LS_EXA_BINARY"
         if git rev-parse --is-inside-work-tree &>/dev/null
-          $__FISH_EXA_BINARY --long --all --group --header --git
+          $_AUTO_LS_EXA_BINARY $AUTO_LS_EXA_GIT_OPTIONS
         else
-          $__FISH_EXA_BINARY -la
+          $_AUTO_LS_EXA_BINARY $AUTO_LS_EXA_OPTIONS
         end
       else
         ls -la
